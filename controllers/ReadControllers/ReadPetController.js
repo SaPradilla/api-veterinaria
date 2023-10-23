@@ -41,7 +41,7 @@ const ReadAllPetProfile = async(req,res)=>{
     }
 }
 const ReadIdPetProfile = async(req,res)=>{
-    try{
+    // try{
         const {id} = req.params
 
         const Pet = await perfilMascota.findAll({
@@ -56,12 +56,6 @@ const ReadIdPetProfile = async(req,res)=>{
                 model:db.historias_clinica
             },{
                 model:db.cirugia
-            },
-            // ,{
-            //     model:db.rastreo
-            // },{
-            {
-                model:db.carnet
             }
         ]
 
@@ -77,11 +71,12 @@ const ReadIdPetProfile = async(req,res)=>{
                 user: Pet
             })
         }
-    }catch(error){
-        return res.status(500).json({
-            msg:'Hubo un error al visualizar los perfiles de las mascotas.',
-            error:error
-        })
-    }
+    // }catch(error){
+    //     return res.status(500).json({
+    //         msg:'Hubo un error al visualizar los perfiles de las mascotas.',
+    //         errorName:error.name,
+    //         error:error
+    //     })
+    // }
 }
 module.exports = {ReadAllPetProfile,ReadIdPetProfile}

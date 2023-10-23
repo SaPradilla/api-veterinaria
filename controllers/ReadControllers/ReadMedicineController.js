@@ -30,7 +30,7 @@ const ReadAllMedicine = async(req,res)=>{
     }
 }
 const ReadIdProduct = async(req,res)=>{
-    try{
+    // try{
         const {id} = req.params
 
         const FindProduct = await medicamento.findAll({
@@ -38,9 +38,9 @@ const ReadIdProduct = async(req,res)=>{
                 id:id
             },
             include:[{
-                model:db.venta_producto
+                model:db.tipo_medicina
             },{
-                model:db.venta_servicio
+                model:db.producto
             }
         ]
 
@@ -55,11 +55,11 @@ const ReadIdProduct = async(req,res)=>{
                 msg:'No se encontró el medicamento'
             })
         }
-    }catch(error){
-        return res.status(500).json({
-            msg:'Hubo un error al visualizar el medicamento',
-            error:error
-        })
-    }
+    // }catch(error){
+    //     return res.status(500).json({
+    //         msg:'Hubo un error al visualizar el medicamento',
+    //         error:error
+    //     })
+    // }
 }
 module.exports = {ReadAllMedicine,ReadIdProduct}

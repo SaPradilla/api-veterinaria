@@ -14,10 +14,6 @@ module.exports = (sequelize, DataTypes) => {
       historias_clinica.belongsTo(models.mascotas,{
         foreignKey:'mascotaId'
       })
-      // 
-      historias_clinica.belongsTo(models.diagnostico,{
-        foreignKey:'diagnosticoId'
-      })
     }
   }
   historias_clinica.init({
