@@ -1,4 +1,5 @@
 'use strict';
+const Encrypt = require('../middleware/auth')
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -9,10 +10,10 @@ module.exports = {
       apellido: "Lopez",
       numero_celular: "312823238",
       direccion: "casa1#17",
-      email: "andres@correo",
-      fecha_nacimiento: "2001-09-10",
+      email: "andres@correo.com",
       rol: "Médico",
-      contrasena: "andres12345",
+      isAdmin:true,
+      contrasena: await Encrypt.cryptPassword('andres12345'),
       updatedAt:new Date(),
       createdAt:new Date() 
     },
@@ -21,10 +22,9 @@ module.exports = {
       apellido: "Garcia",
       numero_celular: "3182298372",
       direccion: "cll 20 - #39-34",
-      email: "laurita@correo",
-      fecha_nacimiento: "1985-09-10",
+      email: "laurita@correo.com",
       rol: "Recepcionista",
-      contrasena: "laurita1",
+      contrasena: await Encrypt.cryptPassword('laurita1'),
       updatedAt:new Date(),
       createdAt:new Date() 
     },
@@ -33,10 +33,9 @@ module.exports = {
       apellido: "Vazques",
       numero_celular: "312833636",
       direccion: "cll 20 - #39-34",
-      email: "alexis123@correo",
-      fecha_nacimiento: "1996-09-10",
+      email: "alexis123@correo.com",
       rol: "Auxiliar",
-      contrasena: "aleva123",
+      contrasena: await Encrypt.cryptPassword('aleva123'),
       updatedAt:new Date(),
       createdAt:new Date() 
     }

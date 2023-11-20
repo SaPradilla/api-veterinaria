@@ -16,12 +16,12 @@ const CreateClient = async(req,res) =>{
 
         })
         return res.status(200).json({
-            msg:'Cliente creado correctamente.',
+            msg:'Registrado correctamente.',
             Cliente:newClient
         })
     }catch(error){
         return res.status(500).json({
-            msg:'Error al crear el cliente',
+            msg:'Hubo un error al registrarse',
             error: error
         })
     }

@@ -2,6 +2,9 @@ const express = require('express')
 const router = express.Router()
 const Routes = [
     //Create
+    {path:'/login/client', controller: require('../../controllers/authController').singInClient},
+    {path:'/login/employee', controller: require('../../controllers/authController').singInEmployee},
+
     {path:'/register/employee', controller: require('../../controllers/CreateControllers/CreateEmployeeController')},
     {path:'/register/pet', controller: require('../../controllers/CreateControllers/CreatePetController')},
     {path:'/register/service', controller: require('../../controllers/CreateControllers/CreateServicesController')},
