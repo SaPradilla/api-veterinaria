@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+
 const AdminUser = require('./Adminuser/UserAdminRoutes')
 
 const routersList = [
