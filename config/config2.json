@@ -1,26 +1,26 @@
 {
     "development": {
-      "username": "root",
-      "password": "8rtV30wUi3LLkJjt4ja8",
-      "database": "railway",
-      "host": "containers-us-west-129.railway.app",
+      "username": "pradi",
+      "password": "sena123",
+      "database": "Veterinaria",
+      "host": "monorail.proxy.rlwy.net",
       "dialect": "mysql",
-      "port":7833
+      "port":30250
     },
     "test": {
-      "username": "root",
-      "password": "8rtV30wUi3LLkJjt4ja8",
-      "database": "railway",
-      "host": "containers-us-west-129.railway.app",
+      "username": "pradi",
+      "password": "sena123",
+      "database": "Veterinaria",
+      "host": "monorail.proxy.rlwy.net",
       "dialect": "mysql",
-      "port":7833
+      "port":30250
     },
     "production": {
-      "username": "root",
-      "password": "8rtV30wUi3LLkJjt4ja8",
-      "database": "railway",
-      "host": "containers-us-west-129.railway.app",
+      "username": "pradi",
+      "password": "sena123",
+      "database": "Veterinaria",
+      "host": "monorail.proxy.rlwy.net",
       "dialect": "mysql",
-      "port":7833
+      "port":30250
     }
   }
