@@ -68,6 +68,8 @@ const singInEmployee = async (req, res) => {
         const user = { ...employeeExists }
         delete user.dataValues.contrasena
 
+        res.cookie('isAdmin', user.dataValues.isAdmin, { httpOnly: true });
+        
         return res.header('auth-token', token).json({
             msg: 'Inicio de sesion exitoso.',
             data: { token },
