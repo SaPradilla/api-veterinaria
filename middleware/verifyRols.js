@@ -18,8 +18,8 @@ const verifyToken = (req, res, next) => {
 
 
 const VerifyRecepcionista = (req, res, next) => {
-
     verifyToken(req, res, next, () => {
+        console.log(req.user)
 
         if (req.user && req.user.role === 'Recepcionista') {
             next()

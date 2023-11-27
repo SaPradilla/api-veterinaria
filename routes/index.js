@@ -8,6 +8,7 @@ const medico = require('./medico')
 const recepcionista = require('./recepcionista')
 const auxiliar = require('./auxiliar')
 const auth = require('./auth.js')
+
 router.use('/admin',verified.VerifyAdmin,admin)
 
 router.use('/clientes',verified.verifyToken,clientes)
