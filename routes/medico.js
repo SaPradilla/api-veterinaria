@@ -11,11 +11,11 @@ const Routes = [
     {path:'/register/surgery', controller: require('../controllers/CreateControllers/CreateSurgeryController') , method:'post'  },
     {path:'/register/clinical-history', controller: require('../controllers/CreateControllers/CreateClinicalHistory') , method:'post' },
     {path:'/register/product/medicine', controller: require('../controllers/CreateControllers/CreateMedicineController') , method:'post' },
+    {path:'/register/product/accessory', controller: require('../controllers/CreateControllers/CreateAccessoryController') , method:'post' },
     {path:'/register/sales/product', controller: require('../controllers/CreateControllers/CreateProductSaleController') , method:'post' },
     {path:'/register/sales/service', controller: require('../controllers/CreateControllers/CreateServiceSaleController') , method:'post' },
     {path:'/register/pqr', controller: require('../controllers/CreateControllers/CreatePQRController') , method:'post' },
     {path:'/register/diagnostico', controller: require('../controllers/CreateControllers/CreateDiagnosis') , method:'post' },
-    {path:'/register/product/accessory', controller: require('../controllers/CreateControllers/CreateAccessoryController') , method:'post' },
     {path:'/register/type-medicine', controller: require('../controllers/CreateControllers/CreateTypeMedicineController') , method:'post' },
     {path:'/register/type-accessory', controller: require('../controllers/CreateControllers/CreateTypeAccessoryController') , method:'post' },
     // Read
