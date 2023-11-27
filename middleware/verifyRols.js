@@ -4,6 +4,8 @@ const config = process.env;
 const verifyToken = (req, res, next) => {
     const token =
         req.body.token || req.headers["auth-token"]
+        console.log(req.user)
+
     if (!token) {
         return res.status(401).json({ error: "Acceso denegado" })
     }
