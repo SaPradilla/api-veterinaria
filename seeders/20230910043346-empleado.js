@@ -7,13 +7,13 @@ module.exports = {
     await queryInterface.bulkInsert('empleados', [{
 
       nombre: "Andrés",
-      apellido: "Lopez",
+      apellido: "Santiago",
       numero_celular: "312823238",
       direccion: "casa1#17",
-      email: "andres@correo.com",
+      email: "123@correo.com",
       rol: "Médico",
       isAdmin:true,
-      contrasena: await Encrypt.cryptPassword('andres12345'),
+      contrasena: await Encrypt.cryptPassword('sena1234567'),
       updatedAt:new Date(),
       createdAt:new Date() 
     },
