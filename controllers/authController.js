@@ -65,18 +65,23 @@ const singInEmployee = async (req, res) => {
         const token = jwt.sign(
             { employeeExists }, process.env.TOKEN_KEY, { expiresIn: "2h", }
         )
-        const user = { ...employeeExists }
-        delete user.dataValues.contrasena
-
-        res.cookie('isAdmin', user.dataValues.isAdmin, { httpOnly: true });
         
-        return res.header('auth-token', token).json({
-            msg: 'Inicio de sesion exitoso.',
-            data: { token },
-            isAdmin: user.dataValues.isAdmin ? true : false,
-            rol: user.dataValues.rol
-        })
-
+        const user = { ...employeeExists.dataValues };
+        delete user.contrasena;
+    
+        // Agregar el rol a la información del usuario
+        user.rol = user.isAdmin ? 'admin' : user.rol;
+    
+        // Si es administrador, establecer la cookie 'isAdmin' como true
+        if (user.isAdmin) {
+          res.cookie('isAdmin', true, { httpOnly: true });
+        }
+    
+        res.header('auth-token', token).json({
+          msg: 'Inicio de sesión exitoso.',
+          data: { token },
+          rol: user.rol,
+        });
 
     } catch (error) {
         return res.json({

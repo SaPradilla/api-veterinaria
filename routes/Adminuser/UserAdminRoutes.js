@@ -36,10 +36,8 @@ const Routes = [
     {path:'/list/service/:id', controller: require('../../controllers/ReadControllers/ReadServicesController').ReadIdService , method:'get' },
     {path:'/list/pqr/:id', controller: require('../../controllers/ReadControllers/ReadPQRController').ReadIdPQR,method:'get' },
     //Update
-    {path:'/edit/client/:id', controller: require('../../controllers/UpdateControllers/UpdateClientController') , method:'put' },
     {path:'/edit/clinical-history/:id', controller: require('../../controllers/UpdateControllers/UpdateClinicalHistoryController') , method:'put' },
     {path:'/edit/medical-appointment/:id', controller: require('../../controllers/UpdateControllers/UpdateMedicalAppointmentController'), method:'put' },
-    {path:'/edit/pet/:id', controller: require('../../controllers/UpdateControllers/UpdatePetController'), method:'put' },
     {path:'/edit/product/medicine/:id', controller: require('../../controllers/UpdateControllers/UpdateMedicineController'), method:'put' },
     {path:'/edit/sale/product/:id', controller: require('../../controllers/UpdateControllers/UpdateProductSaleController'), method:'put' },
     {path:'/edit/sale/service/:id', controller: require('../../controllers/UpdateControllers/UpdateServiceSaleController'), method:'put' },
