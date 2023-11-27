@@ -3,7 +3,6 @@ const router = express.Router()
 const app = express()
 const Routes = [
     //Create
-    {path:'/login/client', controller: require('../controllers/authController').singInClient,method:'post' },
 
     {path:'/register/pqr', controller: require('../controllers/CreateControllers/CreatePQRController') , method:'post' },
     {path:'/register/client', controller: require('../controllers/CreateControllers/CreateClientController') , method:'post' },

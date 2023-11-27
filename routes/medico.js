@@ -3,7 +3,6 @@ const router = express.Router()
 const app = express()
 const Routes = [
     //Create
-    {path:'/login/employee', controller: require('../controllers/authController').singInEmployee,method:'post' },
 
     {path:'/register/pet', controller: require('../controllers/CreateControllers/CreatePetController') , method:'post' },
     {path:'/register/service', controller: require('../controllers/CreateControllers/CreateServicesController') , method:'post' },

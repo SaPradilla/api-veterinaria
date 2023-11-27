@@ -2,10 +2,6 @@ const express = require('express')
 const router = express.Router()
 const app = express()
 const Routes = [
-
-    //login
-    {path:'/login/employee', controller: require('../controllers/authController').singInEmployee,method:'post' },
-    
     // Mascota
     {path:'/register/pet', controller: require('../controllers/CreateControllers/CreatePetController') , method:'post' },
     {path:'/list/pet/all', controller: require('../controllers/ReadControllers/ReadPetController').ReadIdPetProfile, method:'get' },
