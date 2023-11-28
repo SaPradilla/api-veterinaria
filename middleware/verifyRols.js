@@ -19,50 +19,27 @@ const verifyToken = (req, res, next) => {
 }
 
 
-const VerifyRecepcionista = (req, res, next) => {
-    verifyToken(req, res, next, () => {
-        console.log(req.user)
+const verifyTokenAndRoles = (requiredRoles) => {
+    return (req, res, next) => {
+        const token = req.headers["auth-token"];
+        if (!token) return res.status(403).json({ message: 'Token no proporcionado' });
 
-        if (req.user && req.user.role === 'Recepcionista') {
-            next()
-        } else {
-            return res.status(403).json({ error: "Acceso denegado. No eres un usuario recepcionista" })
-        }
-    })
-}
-const VerifyMedico = (req, res, next) => {
+        jwt.verify(token, config.TOKEN_KEY, (err, decoded) => {
+            if (err) return res.status(500).json({ message: 'Error al autenticar el token' });
+            // Verifica los roles del usuario
+            const userRoles = decoded.user
+            console.log(decoded.employeeExists)
 
-    verifyToken(req, res, next, () => {
+            // const hasRequiredRoles = requiredRoles.every(role => userRoles.includes(role));
 
-        if (req.user && req.user.role === 'Médico') {
-            next()
-        } else {
-            return res.status(403).json({ error: "Acceso denegado. No eres un usuario médico" })
-        }
-    })
-}
-const VerifyAuxiliar = (req, res, next) => {
+            // if (!hasRequiredRoles) {
+            //     return res.status(403).json({ message: 'No tienes permisos para acceder a esta ruta' });
+            // }
 
-    verifyToken(req, res, next, () => {
-
-        if (req.user && req.user.role === 'Auxiliar') {
-            next()
-        } else {
-            return res.status(403).json({ error: "Acceso denegado. No eres un usuario Auxiliar" })
-        }
-    })
-}
-
-const VerifyAdmin = (req, res, next) => {
-
-    verifyToken(req, res, next, () => {
-
-        if (req.user && req.user.role === 'admin') {
-            next()
-        } else {
-            return res.status(403).json({ error: "Acceso denegado. Permiso de administrador requerido." });
-
-        }
-    })
-}
-module.exports = {VerifyRecepcionista,VerifyAuxiliar,VerifyMedico,VerifyAdmin,verifyToken} 
+            // Guarda el usuario en la solicitud para usarlo en rutas protegidas
+            req.user = decoded.user;
+            next();
+        });
+    };
+};
+module.exports = {verifyToken,verifyTokenAndRoles} 
