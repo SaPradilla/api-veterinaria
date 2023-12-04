@@ -10,7 +10,15 @@ module.exports = {
       edad: "7 años",
       raza: "no sabemos",
       genero: "Macho",
-      vacunas: "las de siempre",
+      vacunas: JSON.stringify([
+        'Parvovirosis',
+        'Pentavalente',
+        'Rabia',
+        'Moquillo',
+        'Adenovirus',
+        'Traqueobronquitis infecciosa canina',
+        'Leptospira'
+      ]),
       clienteId: 1,
       updatedAt:new Date(),
       createdAt:new Date() 

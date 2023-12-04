@@ -25,7 +25,7 @@ module.exports = {
         type: Sequelize.ENUM('Macho','Hembra')
       },
       vacunas: {
-        type: Sequelize.STRING
+        type: Sequelize.JSON
       },
       clienteId: {
         type: Sequelize.INTEGER,

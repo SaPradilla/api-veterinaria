@@ -5,6 +5,8 @@ const Routes = [
     //login
     {path:'/login/employee', controller: require('../controllers/authController').singInEmployee,method:'post' },
     {path:'/login/client', controller: require('../controllers/authController').singInClient,method:'post' },    
+    {path:'/register/client', controller: require('../controllers/CreateControllers/CreateClientController') , method:'post' },
+
 ]
 
 //En rutador

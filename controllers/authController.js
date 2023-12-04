@@ -47,7 +47,7 @@ const singInEmployee = async (req, res) => {
     const { email, contrasena } = req.body
     try {
 
-        const employeeExists = await Empleado.findOne(
+        let user = await Empleado.findOne(
             {
                 where: {
                     email: email
@@ -55,28 +55,26 @@ const singInEmployee = async (req, res) => {
             }
         )
   
-        if (!employeeExists) { return res.status(404).json({ msg: 'Empleado no encontrado' }) }
-        if (!employeeExists.isActive) { return res.status(401).json({ msg: 'Empleado no activado' }) }
+        if (!user) { return res.status(404).json({ msg: 'Empleado no encontrado' }) }
+        if (!user.isActive) { return res.status(401).json({ msg: 'Empleado no activado' }) }
 
-        const password_compared = await Encrypt.comparePassword(contrasena, employeeExists.contrasena);
+        const password_compared = await Encrypt.comparePassword(contrasena, user.contrasena);
 
         if (!password_compared) { return res.status(401).json({ msg: 'Credenciales incorrectas' }) }
-
-        const token = jwt.sign(
-            { employeeExists }, process.env.TOKEN_KEY, { expiresIn: "2h", }
-        )
-        
-        const user = { ...employeeExists.dataValues };
         delete user.contrasena;
-    
+
         // Agregar el rol a la información del usuario
         user.rol = user.isAdmin ? 'admin' : user.rol;
-    
+
+        const token = jwt.sign(
+            { user }, process.env.TOKEN_KEY, { expiresIn: "2h", }
+        )
+        
         // Si es administrador, establecer la cookie 'isAdmin' como true
         if (user.isAdmin) {
-          res.cookie('isAdmin', true, { httpOnly: true });
+            res.cookie('isAdmin', true, { httpOnly: true });
         }
-    
+        
         res.header('auth-token', token).json({
           msg: 'Inicio de sesión exitoso.',
           data: { token },

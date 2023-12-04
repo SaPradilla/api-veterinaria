@@ -39,7 +39,7 @@ const ReadAllClient = async(req,res)=>{
 const ReadIdClient = async(req,res)=>{
     try{
         const {id} = req.params
-        const FindClient = await Cliente.findAll({
+        const FindClient = await Cliente.findOne({
             where:{
                 id:id
             },
@@ -57,7 +57,7 @@ const ReadIdClient = async(req,res)=>{
         ]
 
         })
-        if(FindClient.length !== 0){
+        if(FindClient){
             return res.status(200).json({
                 msg:'Cliente visualizado correctamente',
                 Cliente: FindClient

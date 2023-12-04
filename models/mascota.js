@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
     edad: DataTypes.STRING,
     raza: DataTypes.STRING,
     genero: DataTypes.ENUM('Macho','Hembra'),
-    vacunas: DataTypes.STRING,
+    vacunas: DataTypes.JSON,
     clienteId:DataTypes.INTEGER,
     isActive: DataTypes.BOOLEAN
   }, {

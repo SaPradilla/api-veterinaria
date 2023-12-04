@@ -49,19 +49,23 @@ const Routes = [
     {path:'/edit/employee/:id', controller: require('../controllers/UpdateControllers/UpdateEmployeeController'), method:'put' },
     {path:'/edit/pqr/:id', controller: require('../controllers/UpdateControllers/UpdatePQRController'), method:'put' },
     // List
-    {path:'/list/employees/all', controller: require('../controllers/ReadControllers/ReadAllEmployeeController').ReadAllEmployees , method:'get' },
-    {path:'/list/medicals/all', controller: require('../controllers/ReadControllers/ReadAllEmployeeController').ReadAllMedical , method:'get' },
-    {path:'/list/auxiliaries/all', controller: require('../controllers/ReadControllers/ReadAllEmployeeController').ReadAllAuxiliaries, method:'get' },
-    {path:'/list/receptionists/all', controller: require('../controllers/ReadControllers/ReadAllEmployeeController').ReadAllReceptionists, method:'get' },
-    {path:'/list/pet/all', controller: require('../controllers/ReadControllers/ReadPetController').ReadIdPetProfile, method:'get' },
-    {path:'/list/client/all', controller: require('../controllers/ReadControllers/ReadClienteController').ReadAllClient, method:'get' },
-    {path:'/list/medical-appointment/all', controller: require('../controllers/ReadControllers/ReadMedicalAppointment').ReadAllMedicalAppointment, method:'get' },
-    {path:'/list/surgery/all', controller: require('../controllers/ReadControllers/ReadSurgeryController').ReadAllSurgery, method:'get' },
-    {path:'/list/sales/product/all', controller: require('../controllers/ReadControllers/ReadSalesController').ReadAllProductSale, method:'get' },
-    {path:'/list/sales/service/all', controller: require('../controllers/ReadControllers/ReadSalesController').ReadAllServiceSale, method:'get' },
-    {path:'/list/product/all', controller: require('../controllers/ReadControllers/ReadMedicineController').ReadIdProduct, method:'get' },
-    {path:'/list/service/all', controller: require('../controllers/ReadControllers/ReadServicesController').ReadIdService, method:'get' },
-    {path:'/list/pqr/all', controller: require('../controllers/ReadControllers/ReadPQRController').ReadAllPQR, method:'get' },
+    {path:'/list/employees', controller: require('../controllers/ReadControllers/ReadAllEmployeeController').ReadAllEmployees , method:'get' },
+    {path:'/list/medicals', controller: require('../controllers/ReadControllers/ReadAllEmployeeController').ReadAllMedical , method:'get' },
+    {path:'/list/auxiliaries', controller: require('../controllers/ReadControllers/ReadAllEmployeeController').ReadAllAuxiliaries, method:'get' },
+    {path:'/list/receptionists', controller: require('../controllers/ReadControllers/ReadAllEmployeeController').ReadAllReceptionists, method:'get' },
+    {path:'/list/pet', controller: require('../controllers/ReadControllers/ReadPetController').ReadAllPetProfile, method:'get' },
+    {path:'/list/client', controller: require('../controllers/ReadControllers/ReadClienteController').ReadAllClient, method:'get' },
+    {path:'/list/medical-appointment', controller: require('../controllers/ReadControllers/ReadMedicalAppointment').ReadAllMedicalAppointment, method:'get' },
+    {path:'/list/surgery', controller: require('../controllers/ReadControllers/ReadSurgeryController').ReadAllSurgery, method:'get' },
+    {path:'/list/sales/product', controller: require('../controllers/ReadControllers/ReadSalesController').ReadAllProductSale, method:'get' },
+    {path:'/list/sales/service', controller: require('../controllers/ReadControllers/ReadSalesController').ReadAllServiceSale, method:'get' },
+    {path:'/list/product', controller: require('../controllers/ReadControllers/ReadMedicineController').ReadIdProduct, method:'get' },
+    {path:'/list/service', controller: require('../controllers/ReadControllers/ReadServicesController').ReadIdService, method:'get' },
+    {path:'/list/pqr', controller: require('../controllers/ReadControllers/ReadPQRController').ReadAllPQR, method:'get' },
+    
+    // Desable
+    {path:'/status/pet/:id', controller: require('../controllers/StateController/DesablePetController'), method:'put' },
+
 ]
 
 //En rutador

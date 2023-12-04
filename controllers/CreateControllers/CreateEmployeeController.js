@@ -18,7 +18,7 @@ const CreateEmployee = async (req,res) =>{
             
         })
         return res.status(201).json({
-            msg:`empleado creado satisfactoriamente.`,
+            msg:`Empleado creado satisfactoriamente.`,
             empleado: newEmployee
         })
 

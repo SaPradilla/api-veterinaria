@@ -2,30 +2,31 @@ const db = require('../../models')
 const perfilMascota = db.mascotas
 
 const ReadAllPetProfile = async(req,res)=>{
+    const {page,size} = req.query
+    console.log(page)
     try{
-        const Pet = await perfilMascota.findAll({
+        const Pets = await perfilMascota.findAll({
+            limit: parseInt(size) ,
+            offset: (parseInt(page) - 1) * parseInt(size), 
             include:[{
                 model:db.cliente
             },{
-                model:db.citas_medica
+                model:db.citas_medica,
+                include:[{
+                    model:db.servicio
+                },{
+                    model:db.empleado
+                }]
             },{
                 model:db.historias_clinica
             },{
                 model:db.cirugia
-            },
-            // ,{
-            //     model:db.rastreo
-            // },{
-            {
-                model:db.carnet
             }
-        ]
-
-        })
-        if(Pet.length !== 0){
+        ]})
+        if(Pets.length !== 0){
             return res.status(200).json({
                 msg:'Perfiles de mascotas visualizados correctamente',
-                PerfilMascota: Pet
+                Mascotas: Pets
             })
         }else{
             return res.status(404).json({
@@ -36,6 +37,7 @@ const ReadAllPetProfile = async(req,res)=>{
         
         return res.status(500).json({
             msg:'Hubo un error al visualizar los perfiles de las mascotas.',
+            errorName:error.name,
             error:error
         })
     }
@@ -51,7 +53,10 @@ const ReadIdPetProfile = async(req,res)=>{
             include:[{
                 model:db.cliente
             },{
-                model:db.citas_medica
+                model:db.citas_medica,
+                include:{
+                    model:db.servicio
+                }
             },{
                 model:db.historias_clinica
             },{

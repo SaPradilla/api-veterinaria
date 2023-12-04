@@ -10,12 +10,12 @@ const CreatePet= async(req,res) =>{
             tipo_mascota:tipo_mascota,
             edad:edad,
             raza:raza,
-            genero:genero,
+            genero:genero ? 'Macho' : 'Hembra',
             vacunas:vacunas,
             clienteId:clienteId
         })
         return res.status(200).json({
-            msg:'Mascota creado correctamente.',
+            msg:'Mascota creada correctamente.',
             Mascota:newPet
         })
     }catch(error){

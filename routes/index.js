@@ -9,12 +9,13 @@ const recepcionista = require('./recepcionista')
 const auxiliar = require('./auxiliar')
 const auth = require('./auth.js')
 
-// router.use('/admin',verified.VerifyAdmin,admin)
+router.use('/admin',verified.verifyTokenAndRoles(['admin']),admin)
+// router.use('/clientes',verified.verifyTokenAndRoles(['admin']),admin)
 
-// router.use('/clientes',verified.verifyToken,clientes)
+router.use('/clientes',verified.verifyToken,clientes)
 
-// router.use('/medico',verified.VerifyMedico,medico)
-router.use('/recepcionista',verified.verifyTokenAndRoles(['recepcionista']))
+router.use('/medico',verified.verifyTokenAndRoles(['Médico']),medico)
+router.use('/recepcionista',verified.verifyTokenAndRoles(['Auxiliar']),recepcionista)
 // router.use('/auxiliar',verified.VerifyAuxiliar,auxiliar)
 router.use('/auth',auth)
 
