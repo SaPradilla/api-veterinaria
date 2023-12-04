@@ -26,6 +26,10 @@ module.exports = (sequelize, DataTypes) => {
       citas_medica.belongsTo(models.empleado,{
         foreignKey:'empleadoId'
       })
+      // 
+      citas_medica.hasOne(models.cirugia,{
+        foreignKey:'cita_medicaId'
+      })
     }
   }
   citas_medica.init({

@@ -6,9 +6,16 @@ const EmpleadosCirugias = db.empleados_cirugia
 const CreateSurgery = async (req, res) => {
     // try {
         const { procedimiento, mascotaId, cita_medicaId, medicoId, auxiliarId, medicoId2 } = req.body
-
+        console.log(req.body)
         const findMedical = await empleado.findByPk(medicoId)
-
+        if(cita_medicaId){
+            const findCita = await db.citas_medica.findByPk(cita_medicaId)
+            if(!findCita){
+                return res.status(404).json({
+                    msg:'Error, no encontro la cita '
+                })
+            }
+        }
         if (findMedical.length !== 0 && findMedical.rol === 'Médico') {
 
             const newSurgery = await Cirugia.create({

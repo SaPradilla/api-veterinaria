@@ -3,11 +3,10 @@ const perfilMascota = db.mascotas
 
 const ReadAllPetProfile = async(req,res)=>{
     const {page,size} = req.query
-    console.log(page)
     try{
         const Pets = await perfilMascota.findAll({
             limit: parseInt(size) ,
-            offset: (parseInt(page) - 1) * parseInt(size), 
+            offset: (parseInt(page) - 1) * parseInt(size),
             include:[{
                 model:db.cliente
             },{
@@ -22,7 +21,8 @@ const ReadAllPetProfile = async(req,res)=>{
             },{
                 model:db.cirugia
             }
-        ]})
+            ]
+        })
         if(Pets.length !== 0){
             return res.status(200).json({
                 msg:'Perfiles de mascotas visualizados correctamente',

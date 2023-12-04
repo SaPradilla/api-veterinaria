@@ -2,8 +2,23 @@ const db = require('../../models')
 const empleado = db.empleado
 
 const ReadAllEmployees = async(req,res)=>{
+    const {page,size} = req.query
     try{
-        const findUser = await empleado.findAll()
+        const findUser = await empleado.findAll({
+            limit: parseInt(size) ,
+            offset: (parseInt(page) - 1) * parseInt(size),
+            include:[{
+                model:db.citas_medica
+            },
+            {
+                model:db.cirugia,
+                include:{
+                    model:db.mascotas
+                }
+
+            }
+        ]
+        })
         if(findUser.length !== 0){
             return res.status(200).json({
                 msg:'empleados visualizados correctamente',

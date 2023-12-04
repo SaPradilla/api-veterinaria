@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
       empleado.hasMany(models.citas_medica,{
         foreignKey:'empleadoId'
       })
-    
       // Relacion N:M
       empleado.belongsToMany(models.cirugia,{
         through:'empleados_cirugia',
