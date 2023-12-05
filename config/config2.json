@@ -1,26 +1,22 @@
 {
-    "development": {
-      "username": "pradi",
-      "password": "sena123",
-      "database": "Veterinaria",
-      "host": "monorail.proxy.rlwy.net",
+  "development": {
+      "username": "root",
+      "password": "",
+      "database": "veterinaria",
       "dialect": "mysql",
-      "port":30250
+      "host":"127.0.0.1",
+      "port":3307
     },
     "test": {
       "username": "pradi",
-      "password": "sena123",
-      "database": "Veterinaria",
-      "host": "monorail.proxy.rlwy.net",
-      "dialect": "mysql",
-      "port":30250
+      "password": "123",
+      "database": "veterinaria",
+      "dialect": "mysql"
     },
     "production": {
       "username": "pradi",
-      "password": "sena123",
-      "database": "Veterinaria",
-      "host": "monorail.proxy.rlwy.net",
-      "dialect": "mysql",
-      "port":30250
+      "password": "123",
+      "database": "veterinaria",
+      "dialect": "mysql"
     }
-  }
+}

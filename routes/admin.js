@@ -65,6 +65,7 @@ const Routes = [
     
     // Desable
     {path:'/status/pet/:id', controller: require('../controllers/StateController/DesablePetController'), method:'put' },
+    {path:'/status/employee/:id', controller: require('../controllers/StateController/DesableEmployeeController'), method:'put' },
 
 ]
 
