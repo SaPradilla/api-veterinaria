@@ -6,6 +6,7 @@ const Routes = [
 
     {path:'/register/pqr', controller: require('../controllers/CreateControllers/CreatePQRController') , method:'post' },
     {path:'/register/client', controller: require('../controllers/CreateControllers/CreateClientController') , method:'post' },
+    {path:'/register/request-appointment', controller: require('../controllers/CreateControllers/CreateRequestAppointment').Create , method:'post' },
    
     // Read
     {path:'/list/employee/:id', controller: require('../controllers/ReadControllers/ReadIdEmployeeController').ReadIdEmployee , method:'get' },
@@ -28,6 +29,7 @@ const Routes = [
     // List
     {path:'/list/employees/all', controller: require('../controllers/ReadControllers/ReadAllEmployeeController').ReadAllEmployees , method:'get' },
     {path:'/list/medicals/all', controller: require('../controllers/ReadControllers/ReadAllEmployeeController').ReadAllMedical , method:'get' },
+
     // {path:'/list/auxiliaries/all', controller: require('../controllers/ReadControllers/ReadAllEmployeeController').ReadAllAuxiliaries, method:'get' },
     // {path:'/list/receptionists/all', controller: require('../controllers/ReadControllers/ReadAllEmployeeController').ReadAllReceptionists, method:'get' },
     // {path:'/list/pet/all', controller: require('../controllers/ReadControllers/ReadPetController').ReadIdPetProfile, method:'get' },
@@ -36,7 +38,7 @@ const Routes = [
     // {path:'/list/surgery/all', controller: require('../controllers/ReadControllers/ReadSurgeryController').ReadAllSurgery, method:'get' },
    
     {path:'/list/product/all', controller: require('../controllers/ReadControllers/ReadMedicineController').ReadIdProduct, method:'get' },
-    {path:'/list/service/all', controller: require('../controllers/ReadControllers/ReadServicesController').ReadIdService, method:'get' },
+    {path:'/list/service', controller: require('../controllers/ReadControllers/ReadServicesController').ReadAllService, method:'get' },
     {path:'/list/pqr/all', controller: require('../controllers/ReadControllers/ReadPQRController').ReadAllPQR, method:'get' },
 ]
 

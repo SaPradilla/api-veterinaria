@@ -31,7 +31,6 @@ module.exports = {
       },
       mascotaId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         references:{
           model:'mascotas',
           key: 'id'

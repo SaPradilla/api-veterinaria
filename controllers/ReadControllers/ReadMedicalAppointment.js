@@ -2,8 +2,12 @@ const db = require('../../models')
 const CitaMedica = db.citas_medica
 
 const ReadAllMedicalAppointment = async(req,res)=>{
+    const {page,size} = req.query
     try{
+        
         const findMedical = await CitaMedica.findAll({
+            limit: parseInt(size) ,
+            offset: (parseInt(page) - 1) * parseInt(size),  
             include:[{
                 model:db.cliente
             },{

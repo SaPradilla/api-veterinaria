@@ -6,6 +6,10 @@ const Routes = [
     {path:'/login/client', controller: require('../controllers/authController').singInClient,method:'post' },
     {path:'/login/employee', controller: require('../controllers/authController').singInEmployee,method:'post' },
 
+    {path:'/register/request-appointment', controller: require('../controllers/CreateControllers/CreateRequestAppointment').Create , method:'post' },
+    {path:'/approve/request-appointment/:id', controller: require('../controllers/CreateControllers/CreateRequestAppointment').approveRequest , method:'put' },
+    {path:'/list/request-appointment', controller: require('../controllers/ReadControllers/ReadAllRequestAppointment') , method:'get' },
+
     {path:'/register/employee', controller: require('../controllers/CreateControllers/CreateEmployeeController'), method:'post' },
     {path:'/register/pet', controller: require('../controllers/CreateControllers/CreatePetController') , method:'post' },
     {path:'/register/service', controller: require('../controllers/CreateControllers/CreateServicesController') , method:'post' },
@@ -48,7 +52,14 @@ const Routes = [
     {path:'/edit/surgery/:id', controller: require('../controllers/UpdateControllers/UpdateSurgeryController'), method:'put' },
     {path:'/edit/employee/:id', controller: require('../controllers/UpdateControllers/UpdateEmployeeController'), method:'put' },
     {path:'/edit/pqr/:id', controller: require('../controllers/UpdateControllers/UpdatePQRController'), method:'put' },
+    
     // List
+
+    {path:'/list/products', controller: require('../controllers/ReadControllers/ReadAllProductsController').ReadAllProducts , method:'get' },
+    {path:'/list/products/medicines', controller: require('../controllers/ReadControllers/ReadAllProductsController').ReadAllMedicine , method:'get' },
+    {path:'/list/type-medicine', controller: require('../controllers/ReadControllers/ReadAllTypeProductoController').readAllTypeMedicine , method:'get' },
+    {path:'/list/type-accesory', controller: require('../controllers/ReadControllers/ReadAllTypeProductoController').readAllTypeAccesory , method:'get' },
+
     {path:'/list/employees', controller: require('../controllers/ReadControllers/ReadAllEmployeeController').ReadAllEmployees , method:'get' },
     {path:'/list/medicals', controller: require('../controllers/ReadControllers/ReadAllEmployeeController').ReadAllMedical , method:'get' },
     {path:'/list/auxiliaries', controller: require('../controllers/ReadControllers/ReadAllEmployeeController').ReadAllAuxiliaries, method:'get' },

@@ -2,34 +2,39 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('medicamentos', {
+    await queryInterface.createTable('solicitud_cita', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      nombre: {
-        type: Sequelize.STRING
-      },
-      tipo_medicinaId: {
+      clienteId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references:{
-          model:'tipo_medicinas',
+          model:'clientes',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+      },
+      tipo_cita: {
+        type:Sequelize.INTEGER,
+        allowNull: false,
+        references:{
+          model:'servicios',
           key:'id'
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
-      precio: {
-        type: Sequelize.INTEGER
+      fecha: {
+        type: Sequelize.DATE
       },
-      volumen: {
-        type: Sequelize.STRING
-      },
-      fecha_venciminento: {
-        type:Sequelize.DATE
+      isAprobada:{
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
       },
       createdAt: {
         allowNull: false,
@@ -42,6 +47,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('medicamentos');
+    await queryInterface.dropTable('solicitud_cita');
   }
 };

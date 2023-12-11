@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   medicamento.init({
     // tipo_medicamento: DataTypes.ENUM('Antibióticos','Antiinflamatorios','Antiparasitario','Nutriente','Juguete','Alimentos','Asesorios','Higiene','Collares'),
+    nombre: DataTypes.STRING,
     tipo_medicinaId:DataTypes.INTEGER,
     precio: DataTypes.INTEGER,
     volumen: DataTypes.STRING,

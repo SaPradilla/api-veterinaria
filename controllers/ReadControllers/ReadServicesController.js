@@ -3,14 +3,15 @@ const Servicio = db.servicio
 
 const ReadAllService = async(req,res)=>{
     try{
-        const FindService = await Servicio.findAll({
-            include:[{
-                model:db.citas_medica
-            },{
-                model:db.venta_servicio
-            }
-        ]
-        })
+        // const FindService = await Servicio.findAll({
+        //     include:[{
+        //         model:db.citas_medica
+        //     },{
+        //         model:db.venta_servicio
+        //     }
+        // ]
+        // })
+        const FindService = await Servicio.findAll()
         if(FindService.length !== 0){
             return res.status(200).json({
                 msg:'Servicios visualizados correctamente',
@@ -32,6 +33,20 @@ const ReadAllService = async(req,res)=>{
 const ReadIdService  = async(req,res)=>{
     try{
         const {id} = req.params
+
+        // const FindService = await Servicio.findAll({
+        //     where:{
+        //         id:id
+        //     },
+        //     include:[{
+        //         model:db.citas_medica
+        //     },{
+        //         model:db.venta_servicio
+        //     }
+        // ]
+        // })
+
+
 
         const FindService = await Servicio.findAll({
             where:{

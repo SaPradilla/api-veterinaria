@@ -3,10 +3,11 @@ const medicamento = db.medicamento
 const Producto = db.producto
 
 const CreateMedicine = async(req,res) =>{
-    try{
-        const {tipo_medicinaId,precio,volumen,fecha_venciminento,cantidad_total} = req.body
+    // try{
+        const {nombre,tipo_medicinaId,precio,volumen,fecha_venciminento,cantidad_total} = req.body
 
         const newMedicine = await medicamento.create({
+            nombre:nombre,
             tipo_medicinaId:tipo_medicinaId,
             precio:precio,
             volumen:volumen,
@@ -24,11 +25,11 @@ const CreateMedicine = async(req,res) =>{
                 medicamento:newMedicine
             })
         }
-    }catch(error){
-        return res.status(500).json({
-            msg:'Error al crear el medicamento.',
-            error: error
-        })
-    }
+    // }catch(error){
+    //     return res.status(500).json({
+    //         msg:'Error al crear el medicamento.',
+    //         error: error
+    //     })
+    // }
 }
 module.exports = CreateMedicine

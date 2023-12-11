@@ -8,27 +8,24 @@ const singInClient = async (req, res) => {
     const { email, contrasena } = req.body
     try {
 
-        const clientExists = await Cliente.findOne(
+        let user = await Cliente.findOne(
             {
                 where: {
                     email: email
                 }
             }
         )
-        if (!clientExists) { return res.status(404).json({ msg: 'Usuario no encontrado' }) }
+        if (!user) { return res.status(404).json({ msg: 'Usuario no encontrado' }) }
 
-        const password_compared = await Encrypt.comparePassword(contrasena, clientExists.contrasena);
+        const password_compared = await Encrypt.comparePassword(contrasena, user.contrasena);
 
         if (!password_compared) { return res.status(401).json({ msg: 'Credenciales incorrectas' }) }
 
+        delete user.contrasena
+
         const token = jwt.sign(
-            { clientExists }, process.env.TOKEN_KEY, { expiresIn: "2h", }
+            { user }, process.env.TOKEN_KEY, { expiresIn: "2h", }
         )
-
-        // hace una copia del objecto y elimina la password para mostrar en la respuesta
-        const user = { ...clientExists }
-        delete user.dataValues.contrasena
-
         return res.header('auth-token', token).json({
             msg: 'Inicio de sesion exitoso.',
             data: { token }
